@@ -6,14 +6,27 @@
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
   <script type="text/javascript">
-    // Data Picker Initialization
-$('.datepicker').pickadate();
+
+    var $form = $('section#order-form'),
+    url = 'https://script.google.com/macros/s/AKfycbylyRuFXo8S1KjG9ylCkwpeOqC06tjPMifWXVg6XL4lq6GqLDA/exec'
+
+    $('#btnSubmit').on('click', function(e) 
+      e.preventDefault();
+      var jqxhr = $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        data: $form.serializeObject()
+      }).success(
+        // do something
+      );
+    })
 
   </script>
 </head>
 <body>
 
-<section class="order-form my-4 mx-4">
+<section class="order-form my-4 mx-4" id="order-form">
     <div class="container pt-4">
 
       <div class="row">
@@ -28,7 +41,7 @@ $('.datepicker').pickadate();
               <label class="order-form-label">First and Last Name</label>
             </div>
             <div class="col-12 col-sm-6">
-              <input class="order-form-input" placeholder="Name">
+              <input class="order-form-input" name="First and Last Name" placeholder="Name">
             </div>
           </div>
 
@@ -39,7 +52,7 @@ $('.datepicker').pickadate();
               <label class="order-form-label">Soap Color</label>
             </div>
             <div class="col-12">
-              <input class="order-form-input" placeholder=" ">
+              <input class="order-form-input" name="Soap Color" placeholder=" ">
             </div>
           </div>
 
@@ -52,7 +65,7 @@ $('.datepicker').pickadate();
               <label class="order-form-label">Dragon Toy Color</label>
             </div>
             <div class="col-12">
-              <input class="order-form-input" placeholder=" ">
+              <input class="order-form-input" name="Dragon Toy Color" placeholder=" ">
             </div>
           </div>
 
@@ -62,12 +75,12 @@ $('.datepicker').pickadate();
   <form>
     <div class="form-group">
       <label for="sel1">Soap Type (select one):</label>
-      <select class="form-control" id="sel1">
-        <option>Dragon ($3.00)</option>
-        <option>Silver Dragon ($3.50)</option>
-        <option>Golden Dragon ($3.50)</option>
-        <option>Mermaid ($4.00)</option>
-        <option>Seashell ($4.00)</option>
+      <select name="Soap Type" class="form-control" id="sel1">
+        <option>Dragon ($7.50)</option>
+        <option>Silver Dragon ($7.99)</option>
+        <option>Golden Dragon ($7.99)</option>
+        <option>Mermaid ($7.50)</option>
+        <option>Seashell ($7.99)</option>
       </select>
       <br>
     </div>
@@ -80,7 +93,7 @@ $('.datepicker').pickadate();
   <form>
     <div class="form-group">
       <label for="sel1">Seashell Soap Shape (select one):</label>
-      <select class="form-control" id="sel1">
+      <select name="Seashell Soap Shape" class="form-control" id="sel1">
         <option>Hexagon-shaped</option>
         <option>Rectangle-shaped</option>
         <option>Didn't order seashell soap</option>
@@ -97,22 +110,22 @@ $('.datepicker').pickadate();
               <label class="order-form-label">Address</label>
             </div>
             <div class="col-12">
-              <input class="order-form-input" placeholder="Street Address">
+              <input name="Street Address" class="order-form-input" placeholder="Street Address">
             </div>
             <div class="col-12 mt-2">
-              <input class="order-form-input" placeholder="House Number">
+              <input name="House Number" class="order-form-input" placeholder="House Number">
             </div>
             <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-              <input class="order-form-input" placeholder="City">
+              <input name="City" class="order-form-input" placeholder="City">
             </div>
             <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-              <input class="order-form-input" placeholder="Region">
+              <input name="Region " class="order-form-input" placeholder="Region">
             </div>
             <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-              <input class="order-form-input" placeholder="Postal / Zip Code">
+              <input name="Postal/Zip Code" class="order-form-input" placeholder="Postal / Zip Code">
             </div>
             <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-              <input class="order-form-input" placeholder="Country">
+              <input name="Country" class="order-form-input" placeholder="Country">
             </div>
           </div>
 
